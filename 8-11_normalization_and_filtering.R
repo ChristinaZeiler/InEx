@@ -84,12 +84,12 @@ TPM.table.clean.up<-function(df){
 
 data.TPM<-list()
 data.TPM[["intron"]]<-data.CPM.lengths[["intron"]]%>%
-  mutate(across(starts_with("PD_") | starts_with("Input_"), 
+  mutate(across(contains("PD_") | contains("Input_"), 
                 .fns = ~ . / in_length * 1000))%>%
   TPM.table.clean.up()
 
 data.TPM[["exon"]]<-data.CPM.lengths[["exon"]]%>%
-  mutate(across(starts_with("PD_") | starts_with("Input_"), 
+  mutate(across(contains("PD_") | contains("Input_"), 
                 .fns = ~ . / ex_length * 1000))%>% 
   TPM.table.clean.up()
 
