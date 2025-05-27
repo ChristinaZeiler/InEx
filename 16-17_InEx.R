@@ -40,6 +40,15 @@ InEx<-merge(data.TPM.cutoff[["intron"]],
 
 write.csv(InEx, row.names = F, file="16_InEx.csv")  
   
+#check: for 5 random genes, display the TPM values and the InEx, manually calculate and check InEx
+#get 5 random genes:
+# genestocheck<-sample(InEx$Row.names, min(5, length(InEx$Row.names)))
+# InEx%>%filter(Row.names %in% genestocheck)
+# data.TPM.cutoff%>%lapply(function(df){
+#   df<-df%>%as.data.frame()%>%rownames_to_column("Row.names")%>%
+#     filter(Row.names %in% genestocheck)
+#   return(df)
+# })
 
   
 
