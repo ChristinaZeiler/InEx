@@ -36,12 +36,12 @@ data.raw<-lapply(suffixes,raw.read)
 names(data.raw)<-c("intron","exon","exon.strict") 
 
 
-#Step 9
+#Step 9a
 #library size = intronic (union) plus exonic (intersection-strict) counts
 lib.size<-colSums(data.raw[["exon.strict"]]) + colSums(data.raw[["intron"]])
 #typeof(lib.size)
 
-#Step 13
+#Step 9b
 # library size normalization
 norm.CPM<- function(df){
   out.df<-sweep(df, 2, lib.size / 1e6, FUN = "/")
